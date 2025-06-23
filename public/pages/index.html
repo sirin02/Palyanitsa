@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Список страв</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Пошук страв..."
+      class="form-input"
+    />
+
+    <button id="addDishBtn" class="add-button">Додати страву</button>
+    <button id="openCartBtn" class="cart-btn"><i class="fa fa-shopping-cart"></i> Кошик </button>
+
+    <div class="sort-wrapper">
+      <label for="sortSelect" class="sort-label">Сортувати за:</label>
+      <select id="sortSelect" class="sort-select">
+        <option value="priceDesc">Ціна: від найбільшої до найменшої</option>
+        <option value="priceAsc" selected>Ціна: від найменшої до найбільшої</option>
+        <option value="noMeat">Без м’яса</option>
+      </select>
+    </div>
+
+    <h2>Усі страви</h2>
+    <div id="dishList" class="dish-list"></div>
+
+    <!-- Модалка редагування/додавання -->
+    <div id="editModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <span id="closeEditModal" class="close">&times;</span>
+        <h2>Редагувати страву</h2>
+        <form id="editDishForm">
+          <input
+            type="text"
+            id="editName"
+            name="name"
+            placeholder="Назва"
+            required
+          />
+          <input
+            type="text"
+            id="editIngredients"
+            name="ingredients"
+            placeholder="Інгредієнти"
+            required
+          />
+          <input
+            type="text"
+            id="editCategory"
+            name="category"
+            placeholder="Категорія"
+            required
+          />
+          <input
+            type="number"
+            id="editPrice"
+            name="price"
+            placeholder="Ціна"
+            step="0.01"
+            required
+          />
+          <input type="file" id="editImage" name="image" accept="image/*" />
+          <button type="submit">Зберегти зміни</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="dishModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Нова страва</h2>
+        <form id="addDishForm" enctype="multipart/form-data">
+          <input type="text" name="name" placeholder="Назва страви" required />
+          <input
+            type="text"
+            name="ingredients"
+            placeholder="Інгредієнти"
+            required
+          />
+          <input type="text" name="category" placeholder="Категорія" required />
+          <input
+            type="number"
+            name="price"
+            placeholder="Ціна (грн)"
+            step="0.01"
+            required
+          />
+          <input type="file" name="image" accept="image/*" required />
+          <button type="submit">Додати</button>
+          <div id="resultMessage"></div>
+        </form>
+      </div>
+    </div>
+
+    <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeCart">&times;</span>
+      <h2>Ваш кошик</h2>
+      <div id="cartItems"></div>
+      <p><strong>Загальна сума:</strong> <span id="totalPrice">0 грн</span></p>
+      <button id="clearCartBtn">Очистити кошик</button>
+    </div>
+  </div>
+
+  <div id="pagination"></div>
+
+    <script src="../js/index.js"></script>
+  </body>
+</html>
