@@ -10,6 +10,7 @@ const { addDish, getDishes, updateDish, deleteDish } = require('./dishesControll
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // Підключення до БД
 connectToDB();
 
@@ -20,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Перевірка наявності папки для зображень
+// Перевірка папки для зображень
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
